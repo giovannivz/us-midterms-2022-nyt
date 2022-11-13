@@ -12,7 +12,8 @@ try:
 except:
 	pass
 
-for url in urls:
+for line in urls:
+	folder, url = line.split(" ")
 	name = os.path.basename(url)
 
 	headers = {}
