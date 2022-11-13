@@ -13,7 +13,7 @@ except:
 	pass
 
 for line in urls:
-	folder, url = line.split(" ")
+	path, url = line.split(" ")
 	name = os.path.basename(url)
 
 	headers = {}
@@ -23,6 +23,10 @@ for line in urls:
 		headers['If-None-Match'] = timestamps[name]['ETag']
 
 	rq = requests.get(url, headers=headers)
+
+	if rq.status_code == 200:
+		print(name)
+		open(f'{path}/{name}', 'w').write(rq.content).close()
 
 	if not name in timestamps:
 		timestamps[name] = {}
