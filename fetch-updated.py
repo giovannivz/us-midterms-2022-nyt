@@ -4,6 +4,8 @@ import os.path
 import requests
 import sys
 
+MAX_PROCS=5
+
 def fetch_url(line):
 	path, url = line.split(" ")
 	name = os.path.basename(url)
