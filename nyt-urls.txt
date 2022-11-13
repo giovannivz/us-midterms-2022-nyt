@@ -66,7 +66,6 @@ NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-maryl
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-massachusetts-governor.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-michigan-governor.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-minnesota-governor.json
-NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-montana-governor.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-nebraska-governor.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-nevada-governor.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-new-hampshire-governor.json
@@ -103,7 +102,6 @@ NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-kentu
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-louisiana-us-senate.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-maryland-us-senate.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-missouri-us-senate.json
-NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-montana-us-senate.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-nevada-us-senate.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-new-hampshire-us-senate.json
 NYT https://static01.nyt.com/elections-assets/2022/data/2022-11-08/results-new-york-us-senate.json
