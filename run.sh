@@ -10,4 +10,6 @@ while [ 1 ]; do
     if (( $RANDOM % 10 == 0 )); then
         gitupload .
     fi
+
+    sleep 5
 done
