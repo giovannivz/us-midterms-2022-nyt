@@ -23,15 +23,13 @@ gitcommit() {
 
     # Use git to find differences and push to github
     git add -A $prefix
-    git diff --cached --name-only | cat
-    #git add log.txt
-
+    # git diff --cached --name-only | cat
     git status
 
     updated=$(git diff --name-only --cached $prefix | xargs)
 
     git commit --author "Automated Script <run@localhost>" -m "$updated" | cat
-    git log --name-status HEAD^..HEAD | cat
+    #git log --name-status HEAD^..HEAD | cat
 }
 
 gitupload() {
