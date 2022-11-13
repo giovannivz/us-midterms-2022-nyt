@@ -6,5 +6,4 @@ while [ 1 ]; do
     #./fetch-nyt.sh
     python3 fetch-updated.py
     gitupload .
-    sleep 30
 done
