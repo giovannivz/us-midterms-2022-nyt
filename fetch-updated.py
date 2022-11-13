@@ -1,29 +1,28 @@
 import json
+import multiprocessing
 import os.path
 import requests
 import sys
 
-urls = open(sys.argv[1]).read().strip()
-urls = urls.split("\n")
-
-timestamps = {}
-
-try:
-	timestamps = json.load(open('timestamps.json'))
-except:
-	pass
-
-for line in urls:
+def fetch_url(line):
 	path, url = line.split(" ")
 	name = os.path.basename(url)
+	filename = f'{path}/{name}'
+
+	timestamp = {}
+
+	try:
+		timestamp = json.load(open(f'{filename}.timestamp'))
+	except:
+		pass
 
 	headers = {}
 
-	if name in timestamps and timestamps[name].get('Last-Modified', None):
-		headers['If-Modified-Since'] = timestamps[name]['Last-Modified']
+	if timestamp.get('Last-Modified', None):
+		headers['If-Modified-Since'] = timestamp['Last-Modified']
 
-	if name in timestamps and timestamps[name].get('ETag', None):
-		headers['If-None-Match'] = timestamps[name]['ETag']
+	if timestamp.get('ETag', None):
+		headers['If-None-Match'] = timestamp['ETag']
 
 	rq = requests.get(url, headers=headers)
 
@@ -33,9 +32,17 @@ for line in urls:
 		with open(f'{path}/{name}', 'wb') as f:
 			f.write(rq.content)
 
-		timestamps[name] = timestamps.get(name, {})
-		timestamps[name]['Last-Modified'] = rq.headers.get('Last-Modified', None)
-		timestamps[name]['ETag'] = rq.headers.get('ETag', None)
+		timestamp['Last-Modified'] = rq.headers.get('Last-Modified', None)
+		timestamp['ETag'] = rq.headers.get('ETag', None)
 
-with open('timestamps.json', 'w') as f:
-	f.write(json.dumps(timestamps))
+	with open(f'{filename}.timestamp', 'w') as f:
+		f.write(json.dumps(timestamp))
+
+urls = open(sys.argv[1]).read().strip()
+urls = urls.split("\n")
+
+for url in urls:
+	fetch_url(url)
+
+# with multiprocessing.Pool(processes=4) as pool:
+# 	pool.imap_unordered(fetch_url, urls)
