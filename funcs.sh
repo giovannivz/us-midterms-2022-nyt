@@ -28,6 +28,8 @@ gitcommit() {
 
     updated=$(git diff --name-only --cached $prefix | xargs)
 
+    echo "updated: $updated"
+
     git commit --author "Automated Script <run@localhost>" -m "$updated" | cat
     git log --name-status HEAD^..HEAD | cat
 }
