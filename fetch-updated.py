@@ -18,23 +18,26 @@ for line in urls:
 
 	headers = {}
 
-	if name in timestamps:
+	if name in timestamps and timestamps[name].get('Last-Modified', None):
 		headers['If-Modified-Since'] = timestamps[name]['Last-Modified']
+
+	if name in timestamps and timestamps[name].get('ETag', None):
 		headers['If-None-Match'] = timestamps[name]['ETag']
 
 	rq = requests.get(url, headers=headers)
 
-	if rq.status_code == 200:
-		print(name)
+	print(rq.status_code, name, headers)
 
+	if rq.status_code == 200:
 		with open(f'{path}/{name}', 'wb') as f:
 			f.write(rq.content)
 
-	if not name in timestamps:
-		timestamps[name] = {}
-
-	timestamps[name]['Last-Modified'] = rq.headers['Last-Modified']
-	timestamps[name]['ETag'] = rq.headers['ETag']
+	try:
+		timestamps[name] = timestamps.get(name, {})
+		timestamps[name]['Last-Modified'] = rq.headers.get('Last-Modified', None)
+		timestamps[name]['ETag'] = rq.headers.get('ETag', None)
+	except:
+		pass
 
 with open('timestamps.json', 'w') as f:
 	f.write(json.dumps(timestamps))
