@@ -28,6 +28,10 @@ gitcommit() {
 
     updated=$(git diff --name-only --cached $prefix | xargs)
 
+    if [ -z "$updated" ]; then
+        echo "not updated"
+    fi
+
     git commit --author "Automated Script <run@localhost>" -m "$updated" | cat
     #git log --name-status HEAD^..HEAD | cat
 }
