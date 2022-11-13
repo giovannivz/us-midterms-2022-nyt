@@ -8,7 +8,7 @@ while [ 1 ]; do
     gitcommit .
 
     if (( $RANDOM % 10 == 0 )); then
-        gitupload .
+        gitupload
     fi
 
     sleep 5
