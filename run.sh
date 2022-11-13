@@ -4,6 +4,6 @@
 
 while [ 1 ]; do
     #./fetch-nyt.sh
-    python3 fetch-updated.py
+    python3 fetch-updated.py nyt-urls.txt
     gitupload .
 done

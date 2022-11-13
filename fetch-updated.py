@@ -1,8 +1,9 @@
 import json
 import os.path
 import requests
+import sys
 
-urls = open('nyt-urls.txt').read().strip()
+urls = open(sys.argv[1]).read().strip()
 urls = urls.split("\n")
 
 timestamps = {}
