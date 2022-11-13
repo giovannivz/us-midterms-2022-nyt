@@ -13,7 +13,7 @@ def fetch_url(line):
 	filename = f'{path}/{name}'
 	timestampdir = f'{path}/timestamps'
 
-	if not os.path.exists(timestampdir)
+	if not os.path.exists(timestampdir):
 		os.mkdir(f'{path}/timestamps')
 
 	timestamp = {}
