@@ -5,5 +5,9 @@
 while [ 1 ]; do
     #./fetch-nyt.sh
     python3 fetch-updated.py nyt-urls.txt
-    gitupload .
+    gitcommit .
+
+    if (( $RANDOM % 10 == 0 )); then
+        gitupload .
+    fi
 done
