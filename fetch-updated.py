@@ -43,5 +43,5 @@ def fetch_url(line):
 urls = open(sys.argv[1]).read().strip()
 urls = urls.split("\n")
 
-with multiprocessing.Pool(processes=4) as pool:
+with multiprocessing.Pool(processes=MAX_PROCS) as pool:
 	pool.map(fetch_url, urls)
