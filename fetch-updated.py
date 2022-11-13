@@ -1,5 +1,6 @@
 import json
 import multiprocessing
+import os
 import os.path
 import requests
 import sys
@@ -10,11 +11,15 @@ def fetch_url(line):
 	path, url = line.split(" ")
 	name = os.path.basename(url)
 	filename = f'{path}/{name}'
+	timestampdir = f'{path}/timestamps'
+
+	if not os.path.exists(timestampdir)
+		os.mkdir(f'{path}/timestamps')
 
 	timestamp = {}
 
 	try:
-		timestamp = json.load(open(f'{filename}.timestamp'))
+		timestamp = json.load(open(f'{timestampdir}/{name}'))
 	except:
 		pass
 
@@ -37,7 +42,7 @@ def fetch_url(line):
 		timestamp['Last-Modified'] = rq.headers.get('Last-Modified', None)
 		timestamp['ETag'] = rq.headers.get('ETag', None)
 
-	with open(f'{filename}.timestamp', 'w') as f:
+	with open(f'{timestampdir}/{name}', 'w') as f:
 		f.write(json.dumps(timestamp))
 
 urls = open(sys.argv[1]).read().strip()
