@@ -24,6 +24,9 @@ for line in urls:
 
 	rq = requests.get(url, headers=headers)
 
+	if not name in timestamps:
+		timestamps[name] = {}
+
 	timestamps[name]['Last-Modified'] = rq.headers['Last-Modified']
 	timestamps[name]['ETag'] = rq.headers['ETag']
 
