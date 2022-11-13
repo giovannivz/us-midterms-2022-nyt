@@ -32,12 +32,9 @@ for line in urls:
 		with open(f'{path}/{name}', 'wb') as f:
 			f.write(rq.content)
 
-	try:
 		timestamps[name] = timestamps.get(name, {})
 		timestamps[name]['Last-Modified'] = rq.headers.get('Last-Modified', None)
 		timestamps[name]['ETag'] = rq.headers.get('ETag', None)
-	except:
-		pass
 
 with open('timestamps.json', 'w') as f:
 	f.write(json.dumps(timestamps))
