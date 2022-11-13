@@ -34,7 +34,7 @@ for line in urls:
 	timestamps[name]['Last-Modified'] = rq.headers['Last-Modified']
 	timestamps[name]['ETag'] = rq.headers['ETag']
 
-	print(timestamps)
+	json.dump(timestamps, open('timestamps.json', 'w'))
 
 	# {'Connection': 'keep-alive',
 	# 'Content-Length': '70296',
