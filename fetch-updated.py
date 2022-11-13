@@ -26,7 +26,7 @@ for line in urls:
 
 	if rq.status_code == 200:
 		print(name)
-		open(f'{path}/{name}', 'w').write(rq.content).close()
+		open(f'{path}/{name}', 'wb').write(rq.content)
 
 	if not name in timestamps:
 		timestamps[name] = {}
@@ -34,4 +34,4 @@ for line in urls:
 	timestamps[name]['Last-Modified'] = rq.headers['Last-Modified']
 	timestamps[name]['ETag'] = rq.headers['ETag']
 
-open('timestamps.json', 'w').write(json.dumps(timestamps)).close()
+open('timestamps.json', 'w').write(json.dumps(timestamps))
