@@ -33,7 +33,7 @@ def fetch_url(line):
 
 	rq = requests.get(url, headers=headers)
 
-	print(rq.status_code, name, headers)
+	print(rq.status_code, url, headers)
 
 	if rq.status_code == 200:
 		with open(f'{path}/{name}', 'wb') as f:
