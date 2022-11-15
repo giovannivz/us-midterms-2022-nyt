@@ -5,7 +5,7 @@ import os.path
 import requests
 import sys
 
-MAX_PROCS=5
+MAX_PROCS=3
 
 def fetch_url(line):
 	path, url = line.split(" ")
