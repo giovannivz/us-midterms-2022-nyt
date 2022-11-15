@@ -5,7 +5,7 @@ import os.path
 import requests
 import sys
 
-MAX_PROCS=3
+MAX_PROCS=5
 
 def fetch_url(line):
 	path, url = line.split(" ")
@@ -31,7 +31,7 @@ def fetch_url(line):
 	if timestamp.get('ETag', None):
 		headers['If-None-Match'] = timestamp['ETag']
 
-	rq = requests.get(url, headers=headers)
+	rq = requests.get(url, headers=headers, timeout=5)
 
 	print(rq.status_code, url, headers)
 
